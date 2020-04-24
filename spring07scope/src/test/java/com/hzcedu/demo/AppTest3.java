@@ -16,8 +16,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:applicationContext.xml")
-public class AppTest {
+@ContextConfiguration(classes = AppConfig.class)
+public class AppTest3 {
 
     /**
      * 1 无论是否主动去获取bean对象，spring上下文一加载就会去加载bean对象
@@ -25,10 +25,10 @@ public class AppTest {
      */
 
     @Autowired
-    private Notepad notepad1;
+    private Notepad3 notepad1;
 
     @Autowired
-    private Notepad notepad2;
+    private Notepad3 notepad2;
 
     @Test
     public void name() {

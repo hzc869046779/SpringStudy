@@ -28,6 +28,12 @@
 - spring06xml
   此文件夹主要是xml文件装配详解
 
+- spring07scope
+  此文件夹主要是讲解spring中bean对象的作用方式
+
+- spring08factory
+  此文件夹主要是讲解如何xml文件如何采用工厂模式注入bean
+
 #### 3.其他说明
 
 - 视频课程地址来自于千峰教育。

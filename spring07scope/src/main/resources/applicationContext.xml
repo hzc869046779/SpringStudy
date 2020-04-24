@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--scope：
+        单例(Singleton)
+            在整个应用程序中，只创建bean的一个实例   <初始化时候就会加载,可以使用lazy-init或者@Lazy改为按需加载>
+        原型(Prototype)
+            每次注入或通过Spring上下文获取的时候，都会创建一个新的bean实例
+        会话(Session)
+            在Web应用中，为每个会话创建一个bean实例
+        请求(request)
+            在Web应用中，为每个请求创建一个bean实例-->
+
+    <context:component-scan base-package="com.hzcedu.demo" />
 
 
-    <bean id="notepad" class="com.hzcedu.demo.Notepad"/>
+    <!--lazy-init 使得使用的时候再加载-->
+    <bean id="notepad" class="com.hzcedu.demo.Notepad" scope="singleton" lazy-init="true"
+        destroy-method="destroy"  init-method="init"/>
 </beans>
