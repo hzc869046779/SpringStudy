@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+        <!--bean元素:描述当前对象需要spring容器管理-->
+        <!--id：可以根据id来标识对象-->
+        <!--class： 被管理对象类的全名-->
+
+        <bean id="music1" class="com.hzcedu.demo.soundsystem.Music">
+                <constructor-arg value="I DO 1"/>
+                <constructor-arg value="150" />
+        </bean>
+
+        <bean id="music2" class="com.hzcedu.demo.soundsystem.Music">
+                <constructor-arg value="I DO 2"/>
+                <constructor-arg value="150" />
+        </bean>
+
+        <bean id="music3" class="com.hzcedu.demo.soundsystem.Music">
+                <constructor-arg value="I DO 3"/>
+                <constructor-arg value="150" />
+        </bean>
+
+        <bean id="compactDisc1" class="com.hzcedu.demo.soundsystem.CompactDisc">
+             <constructor-arg name="title" value="I Do"/>
+                <constructor-arg index="1" value="莫文蔚"/>
+                <constructor-arg name="tracks">
+                        <list>
+                                <!--<value>I DO 1</value>
+                                <value>I DO 2</value>
+                                <value>I DO 3</value>-->
+
+                                <ref bean="music1"/>
+                                <ref bean="music2"/>
+                                <ref bean="music3"/>
+                        </list>
+
+                       <!-- <array>
+                                <value> I DO</value>
+
+                                <ref bean=""/>
+                        </array>-->
+
+
+
+
+                       <!-- <map>
+                                <entry key="m1" value=""/>
+
+                                <entry key="m1" value-ref="music1"/>
+                        </map>-->
+                </constructor-arg>
+        </bean>
+
+        <bean id="compactDisc2" class="com.hzcedu.demo.soundsystem.CompactDisc"
+                c:_0="清明雨上"
+                c:_1="许嵩"
+                />
+
+        <!--<bean id="compactDisc2" class="com.hzcedu.demo.soundsystem.CompactDisc"/>-->
+
+      <!--<bean name="compactDisc1 compactDisc2" class="com.hzcedu.demo.soundsystem.CompactDisc"/>-->
+
+        <bean id="cdPlayer1" class="com.hzcedu.demo.soundsystem.CDPlayer">
+                <constructor-arg ref="compactDisc1"/>
+        </bean>
+
+        <bean id="cdPlayer2" class="com.hzcedu.demo.soundsystem.CDPlayer" c:_0-ref="compactDisc2"></bean>
+        <bean id="cdPlayer3" class="com.hzcedu.demo.soundsystem.CDPlayer" c:compactDisc-ref="compactDisc2"></bean>
+
+</beans>
